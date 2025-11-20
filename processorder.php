@@ -1,13 +1,22 @@
 <?php 
+<<<<<<< HEAD
 $tireqty = (int) $_POST['tireqty'];
 $oilqty = (int) $_POST['oilqty'];
 $sparkqty = (int) $_POST['sparkqty'];
 $find = $_POST['find'];
+=======
+    // create short variable names and 
+    // retrived submitted values from form fields (orderform.html)
+      $tireqty = $_POST['tireqty'];
+      $oilqty = $_POST['oilqty'];
+      $sparkqty = $_POST['sparkqty'];
+>>>>>>> e756624a420bc1a40b991c2dcd619408b400ac7b
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bob's Auto Parts - Order Results</title>
@@ -33,10 +42,48 @@ $find = $_POST['find'];
           exit;
         }
 
+=======
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joe's Comission Calculator - Result</title>
+    <style>
+        body{font-family:sans-serif; }
+        td{padding:5px;}
+    </style>
+</head>
+<body>
+    <h1>
+        Bob's Auto Parts 
+    </h1>
+    <h2>
+        Order Results
+    </h2>
+
+    <?php
+        echo "<p>Order processed at ";
+        echo date('H:i, jS F Y');
+        echo "</p>";
+
+       echo '<p>Your order is as follows: </p>';
+       //remove any unwanted characters and
+       //Convert special characters to HTML entities
+        echo htmlspecialchars($tireqty).' tires<br />';
+        echo htmlspecialchars($oilqty).' bottles of oil<br />';
+        echo htmlspecialchars($sparkqty).' spark plugs<br />';
+
+        $totalqty = 0;
+        //get the sum of the total items ordered
+        $totalqty = $tireqty + $oilqty + $sparkqty;
+        echo "<p>Items ordered: ".$totalqty."<br />";
+        $totalamount = 0.00;
+
+        //Define constant variable for the product price
+>>>>>>> e756624a420bc1a40b991c2dcd619408b400ac7b
         define('TIREPRICE', 100);
         define('OILPRICE', 10);
         define('SPARKPRICE', 4);
 
+<<<<<<< HEAD
         $totalamount = ($tireqty * TIREPRICE) + ($oilqty * OILPRICE) + ($sparkqty * SPARKPRICE);
         $subtotal = $totalamount;
         $taxrate = 0.10;
@@ -115,3 +162,19 @@ $find = $_POST['find'];
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+=======
+        //Calculate the total amount per item
+        $totalamount = $tireqty * TIREPRICE
+                        + $oilqty * OILPRICE
+                        + $sparkqty * SPARKPRICE;
+
+        //Display the result with 2 decimal number format
+        echo "Subtotal: $".number_format($totalamount,2)."<br />";
+
+        $taxrate = 0.10; // local sales tax is 10%
+        //Compute the tax and display the customer's bill
+        $totalamount = $totalamount * (1 + $taxrate);
+        echo "Total including tax: $".number_format($totalamount,2)."</p>";
+    </body>
+</html>
+>>>>>>> e756624a420bc1a40b991c2dcd619408b400ac7b
